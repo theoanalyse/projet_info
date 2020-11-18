@@ -69,8 +69,7 @@ class Graph:
         return (len(self.arcs)/(len(self.vertices))*(len(self.vertices)-1))
 
 
-
-
+'''
 if __name__ == "__main__":
     g = Graph()
     g.add_vertex(0)
@@ -83,4 +82,4 @@ if __name__ == "__main__":
     print(g.vertices)
     print (g.is_connex())
     print(g.density())
-    
+''' 

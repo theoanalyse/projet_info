@@ -26,12 +26,12 @@ def A_star(Graph, start, finish) :
     f_score[start] = g_score[start] + heuristic(start, finish)
     while queue != [] :
         u = find_minimum(queue, f_score)
-        queue.pop(u)
+        queue.remove(u)
         if u == finish :
             return (path, g_score[finish])
         closed_list+= [u]
 
-        for v in Graph.outgoing_neighbors() :
+        for v in Graph.outgoing_neighbours(u) :
             if not(v in closed_list) :
                 g_score_try = g_score[u] + Graph.arc_weight((u,v))
                 if not(v in queue) or g_score_try < g_score[v] :

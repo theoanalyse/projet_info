@@ -2,6 +2,7 @@ import parser as par
 import graph as g
 import dijkstra as d
 import algorithm_A_star as aas
+import algo_A_ETOILE as aAE
 
 def create_port_graph():
     # setup the graph and its data 
@@ -23,9 +24,9 @@ def create_port_graph():
 
 
 graph_ports, ports = create_port_graph()
-dict_path = d.dijkstra(graph_ports, ports[3])
+dict_path_dijkstra = d.dijkstra(graph_ports, ports[3])
+dict_path_a_star = aAE.A_star(graph_ports, ports[1], ports[3])
 
 # 3rd port is CNNGB and 1st port is FRFOS
-d.display_shortest_path(dict_path, root_node=ports[1].get_name(), goal_node=ports[3].get_name())
-
-#hey Thomas est ce que tu vois mon update ?
+d.display_shortest_path(dict_path_dijkstra, root_node=ports[1].get_name(), goal_node=ports[3].get_name())
+d.display_shortest_path(dict_path_a_star, root_node=ports[1], goal_node=ports[3])
