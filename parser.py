@@ -18,3 +18,7 @@ def parse_adjacency_matrix(matrix_file):
 			tokens = [float(x) for x in line.strip().split(' ')] # transform the line in a list
 			adjacency_matrix.append(tokens)
 	return adjacency_matrix
+
+
+coordinates = parse_csv("input/coordinates.csv")
+adjacency_matrix = parse_adjacency_matrix("input/adjacency_matrix.txt")
