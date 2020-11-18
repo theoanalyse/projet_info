@@ -10,6 +10,9 @@ class Coordinate:
         self.theta = ( m.pi* y ) / 180 # longitude in radians
         self.name = name # name of the port     
 
+    def get_name(self):
+        return self.name
+
     def get_coordinates_degree(self):
         return (self.x, self.y, self.name)
 

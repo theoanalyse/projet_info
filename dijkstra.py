@@ -1,5 +1,9 @@
 import graph as gr
 import math as m
+import coordinate as coord
+
+#Adapter le code pour qu'il retourne le poids des arcs sommés
+#Adapter le code pour qu'il donne juste les NOMS des ports, sinon on peut RIEN LIRE
 
 def find_min(queue, d):
     min = m.inf
@@ -14,6 +18,7 @@ def find_min(queue, d):
 def dijkstra(G, root_vertex):
     d = {}
     p = {}
+    p_lisible = {}
     queue = G.vertices.copy()
     for vertex in queue:
         d[vertex] = m.inf
@@ -25,8 +30,9 @@ def dijkstra(G, root_vertex):
         for v in G.outgoing_neighbours(u):
             if d[v] > d[u] + G.arc_weight((u, v)):
                 d[v] = d[u] + G.arc_weight((u, v))
-                p[v] = u
-    return d,p
+                p[v] = u.get_name()
+                p_lisible[v.get_name()] = (u.get_name(),d[v])
+    return p_lisible
 
 
 def create_graph_example():
@@ -53,3 +59,15 @@ def create_graph_example():
 if __name__ == "__main__":
     g = create_graph_example()
     print(dijkstra(g, "A"))
+
+    '''
+    def show_best_path(paths_dict):
+    path = []
+    next_to_check = 26
+    while (next_to_check != 0):
+        path.append(next_to_check)
+        next_to_check = paths_dict[next_to_check]
+    path.append(0)
+    path.reverse()
+    return path
+    '''

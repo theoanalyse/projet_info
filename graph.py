@@ -60,7 +60,7 @@ class Graph:
     def is_connex(self) :
         for v in self.vertices :
             if self.ingoing_neighbours(v) == [] and self.outgoing_neighbours(v) == [] :
-                return False
+                return (False, v)
         return True
 
     #Check whether or not the graph is supposed to be oriented - and how do we treat unoriented graphs ?
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     arc_CA = (2, 0)
     arc_DA = (3, 0)
     g.add_arc(arc_AB, 3)
-    g.add_vertex(("coord_x", "coord_y", "Luxeuil-les-Bains"))
+    print(g.vertices)
     print (g.is_connex())
     print(g.density())
     

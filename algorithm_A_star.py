@@ -1,7 +1,9 @@
 import graph as gr
+import coordinate as coord
+
 
 def heuristic(vertex1, vextex2) :
-    return 1
+    return vertex1.distance(vertex2)
 
 def extract_minimum(F) :
     return

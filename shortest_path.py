@@ -7,16 +7,20 @@ ports = par.parse_csv("input/coordinates.csv")
 adjacency_matrix = par.parse_adjacency_matrix("input/adjacency_matrix.txt")
 
 graph_ports = g.Graph()
+
 for port in ports:
-    x, y, port_name = port.get_coordinates_radians()
-    graph_ports.add_vertex( (port_name, x, y) )
+    graph_ports.add_vertex( port )
+
 
 # print(graph_ports.list_vertices())
 
-available_ports = 0
+
+
 for i in range(len(adjacency_matrix)):
     for j in range(len(adjacency_matrix[i])):
-        if adjacency_matrix[i][j] != -1:
-            available_ports += 1
-print(available_ports)
-print(graph_ports.is_connex())
+        if adjacency_matrix[i][j] > 0:
+            graph_ports.add_arc((ports[i], ports[j]), p=adjacency_matrix[i][j])
+            
+
+print(d.dijkstra(graph_ports, ports[3]))
+
