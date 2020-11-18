@@ -1,17 +1,18 @@
+import math as m
 import graph as gr
 import coordinate as coord
 
 
-def heuristic(vertex1, vextex2) :
-    return vertex1.distance(vertex2)
+def heuristic(vertex_1, vertex_2) :
+    return vertex_1.distance(vertex_2)
 
 
-def find_min(queue, dict):
+def find_minimum(queue, dict):
     min = m.inf
     vertex_min = None
     for vertex in queue:
         if dict[vertex] <= min:
-            min = d[vertex]
+            min = dict[vertex]
             vertex_min = vertex
     return vertex_min
 
@@ -23,11 +24,11 @@ def A_star(Graph, start, finish) :
     path = {}
     g_score[start] = 0
     f_score[start] = g_score[start] + heuristic(start, finish)
-    while F != [] :
+    while queue != [] :
         u = find_minimum(queue, f_score)
         queue.pop(u)
         if u == finish :
-            return (p, g_score[finish])
+            return (path, g_score[finish])
         closed_list+= [u]
 
         for v in Graph.outgoing_neighbors() :
