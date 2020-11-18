@@ -23,7 +23,6 @@ def A_star(Graph, start, finish) :
     path = {}
     g_score[start] = 0
     f_score[start] = g_score[start] + heuristic(start, finish)
-
     while F != [] :
         u = find_minimum(queue, f_score)
         queue.pop(u)

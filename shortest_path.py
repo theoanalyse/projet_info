@@ -28,3 +28,4 @@ dict_path = d.dijkstra(graph_ports, ports[3])
 # 3rd port is CNNGB and 1st port is FRFOS
 d.display_shortest_path(dict_path, root_node=ports[1].get_name(), goal_node=ports[3].get_name())
 
+#hey Thomas est ce que tu vois mon update ?
