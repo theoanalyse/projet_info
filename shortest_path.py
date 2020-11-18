@@ -24,3 +24,5 @@ for i in range(len(adjacency_matrix)):
 
 print(d.dijkstra(graph_ports, ports[3]))
 
+#"hello !"
+
