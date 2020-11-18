@@ -62,9 +62,11 @@ class Graph:
             if self.ingoing_neighbours(v) == [] and self.outgoing_neighbours(v) == [] :
                 return False
         return True
+
+    #Check whether or not the graph is supposed to be oriented - and how do we treat unoriented graphs ?
     
     def density(self) :
-        return (len(self.arcs)/(len(self.vertices))^2)
+        return (len(self.arcs)/(len(self.vertices))*(len(self.vertices)-1))
 
 
 
@@ -78,7 +80,7 @@ if __name__ == "__main__":
     arc_CA = (2, 0)
     arc_DA = (3, 0)
     g.add_arc(arc_AB, 3)
-    g.add_arc(arc_CA, 5)
+    g.add_vertex(("coord_x", "coord_y", "Luxeuil-les-Bains"))
     print (g.is_connex())
     print(g.density())
     

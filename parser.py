@@ -19,6 +19,5 @@ def parse_adjacency_matrix(matrix_file):
 			adjacency_matrix.append(tokens)
 	return adjacency_matrix
 
-
 coordinates = parse_csv("input/coordinates.csv")
 adjacency_matrix = parse_adjacency_matrix("input/adjacency_matrix.txt")
