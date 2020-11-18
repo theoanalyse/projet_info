@@ -34,15 +34,40 @@ def dijkstra(G, root_vertex):
                 p_lisible[v.get_name()] = (u.get_name(),d[v])
     return p_lisible
 
-def display_shortest_path(dict_path, root_node, goal_node):
-    path = [root_node]
-    to_find = root_node
-    while to_find != goal_node:
-        for key in dict_path:
-            if key == to_find:            
-                name, time_to_travel = dict_path[key]
-                path.append(name)
-                to_find = name
+
+def create_graph_example():
+    g = gr.Graph()
+    g.add_vertex("A")
+    g.add_vertex("B")
+    g.add_vertex("C")
+    g.add_vertex("D")
+    g.add_vertex("E")
+    g.add_vertex("F")
+    g.add_vertex("G")
+    g.add_arc(("A", "B"), 3)
+    g.add_arc(("A", "E"), 10)
+    g.add_arc(("B", "C"), 6)
+    g.add_arc(("B", "D"), 13)
+    g.add_arc(("C", "D"), 6)
+    g.add_arc(("E", "D"), 9)
+    g.add_arc(("E", "F"), 1)
+    g.add_arc(("F", "D"), 3)
+    g.add_arc(("C", "G"), 15)
+    g.add_arc(("D", "G"), 3)
+    return g
+
+if __name__ == "__main__":
+    g = create_graph_example()
+    print(dijkstra(g, "A"))
+
+    '''
+    def show_best_path(paths_dict):
+    path = []
+    next_to_check = 26
+    while (next_to_check != 0):
+        path.append(next_to_check)
+        next_to_check = paths_dict[next_to_check]
+    path.append(0)
     path.reverse()
-    print('best path = ', path)
-            
+    return path
+    '''
