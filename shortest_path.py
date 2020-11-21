@@ -22,11 +22,23 @@ def create_port_graph():
 
     return graph_ports, ports
 
+def display_shortest_path_dijkstra(dict_path, root_node, goal_node):
+    path = [root_node]
+    to_find = root_node
+    while to_find != goal_node:
+        for key in dict_path:
+            if key == to_find:            
+                name, time_to_travel = dict_path[key]
+                path.append(name)
+                to_find = name
+    path.reverse()
+    print('best path = ', path, "time = ", dict_path[root_node])
 
 graph_ports, ports = create_port_graph()
 dict_path_dijkstra = d.dijkstra(graph_ports, ports[3])
 dict_path_a_star = aAE.A_star(graph_ports, ports[1], ports[3])
 
+
 # 3rd port is CNNGB and 1st port is FRFOS
-d.display_shortest_path(dict_path_dijkstra, root_node=ports[1].get_name(), goal_node=ports[3].get_name())
-d.display_shortest_path(dict_path_a_star, root_node=ports[1], goal_node=ports[3])
+display_shortest_path_dijkstra(dict_path_dijkstra, root_node=ports[1].get_name(), goal_node=ports[3].get_name())
+#aAE.display_shortest_path_a_star(dico_a_star, root_node=ports[1].get_name(), goal_node=ports[3].get_name())

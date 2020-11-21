@@ -34,7 +34,7 @@ def dijkstra(G, root_vertex):
                 p_lisible[v.get_name()] = (u.get_name(),d[v])
     return p_lisible
 
-def display_shortest_path(dict_path, root_node, goal_node):
+def display_shortest_path_dijkstra(dict_path, root_node, goal_node):
     path = [root_node]
     to_find = root_node
     while to_find != goal_node:
@@ -44,5 +44,5 @@ def display_shortest_path(dict_path, root_node, goal_node):
                 path.append(name)
                 to_find = name
     path.reverse()
-    print('best path = ', path)
+    print('best path = ', path, "time = ", dict_path[root_node])
             
