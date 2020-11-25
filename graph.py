@@ -59,7 +59,7 @@ class Graph:
 
     def is_connex(self) :
         for v in self.vertices :
-            if self.ingoing_neighbours(v) == [] and self.outgoing_neighbours(v) == [] :
+            if self.ingoing_neighbours(v) == [] and self.   (v) == [] :
                 return (False, v)
         return True
 
