@@ -22,14 +22,13 @@ def A_star(Graph, start, finish) :
     closed_list = []
     queue = [start]
     path = {}
-    path_lisible = {}
     g_score[start] = 0
     f_score[start] = g_score[start] + heuristic(start, finish)
     while queue != [] :
         u = find_minimum(queue, f_score)
         queue.remove(u)
         if u == finish :
-            return (path_lisible, g_score[finish])
+            return (path, g_score[finish])
         closed_list+= [u]
 
         for v in Graph.outgoing_neighbours(u) :
@@ -37,7 +36,7 @@ def A_star(Graph, start, finish) :
                 g_score_try = g_score[u] + Graph.arc_weight((u,v))
                 if not(v in queue) or g_score_try < g_score[v] :
                     path[v] = u
-                    path_lisible[v.get_name()] = u.get_name()
+                    path[v.get_name()] = u.get_name()
                     g_score[v] = g_score_try
                     f_score[v] = g_score[v] + heuristic(v, finish)
                     if not (v in queue) :
@@ -56,3 +55,4 @@ def display_shortest_path_a_star(dict_path, root_node, goal_node):
                 to_find = name
     path.reverse()
     print('best path = ', path)
+
